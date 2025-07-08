@@ -20,6 +20,27 @@ function useFadeInOnScroll() {
   }, []);
 }
 
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      setVisible(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  if (!visible) return null;
+  return (
+    <button
+      className="scroll-to-top-btn"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Subir arriba"
+    >
+      ↑
+    </button>
+  );
+}
+
 function App() {
   useFadeInOnScroll();
   // Referencias para scroll suave
@@ -120,6 +141,7 @@ function App() {
         <h4 style={{color:'#fff', fontWeight:600, marginTop:'2rem'}}>¡Tu opinión es importante!</h4>
         <p style={{color:'#eafbe0'}}>No dudes en escribir para sugerir nuevos temas, ejercicios o mejoras para la web.</p>
       </section>
+      <ScrollToTopButton />
       <footer className="footer-resalta">
         Proyecto de aprendizaje creado con React · Jhonas
       </footer>
