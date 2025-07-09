@@ -1,7 +1,5 @@
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
-
-// Importa los nuevos componentes de sección (deberás crearlos)
 import { HeroSection } from './components/sections/HeroSection';
 import { EjerciciosSection } from './components/sections/EjerciciosSection';
 import { TeoriaSection } from './components/sections/TeoriaSection';
@@ -9,7 +7,6 @@ import { SobreSection } from './components/sections/SobreSection';
 import { ContactoSection } from './components/sections/ContactoSection';
 import { Footer } from './components/Footer';
 
-// Hook optimizado (ver siguiente punto)
 function useFadeInOnScroll(refs) {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,14 +20,11 @@ function useFadeInOnScroll(refs) {
       },
       { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
     );
-
     refs.forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
-
     return () => {
       refs.forEach((ref) => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         if (ref.current) observer.unobserve(ref.current);
       });
     };
@@ -59,40 +53,23 @@ function ScrollToTopButton() {
 }
 
 function App() {
-  // Referencias para scroll suave
   const inicioRef = useRef(null);
   const ejerciciosRef = useRef(null);
   const teoriaRef = useRef(null);
   const sobreRef = useRef(null);
   const contactoRef = useRef(null);
-
-  // Array de refs para el hook de animación
   const sectionRefs = [inicioRef, ejerciciosRef, teoriaRef, sobreRef, contactoRef];
-  
-  // Usamos el hook optimizado
   useFadeInOnScroll(sectionRefs);
-  
-  const handleNavClick = (ref) => (e) => {
-    e.preventDefault();
-    ref.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="App app-bg parallax-bg">
-      <nav className="navbar">
-        <a href="#inicio" onClick={handleNavClick(inicioRef)}>INICIO</a>
-        <a href="#ejercicios" onClick={handleNavClick(ejerciciosRef)}>EJERCICIOS</a>
-        <a href="#teoria" onClick={handleNavClick(teoriaRef)}>TEORÍA</a>
-        <a href="#sobre" onClick={handleNavClick(sobreRef)}>SOBRE EL PROYECTO</a>
-        <a href="#contacto" onClick={handleNavClick(contactoRef)}>CONTACTO</a>
-      </nav>
-
+    <div className="App">
+      <div className="logo-fixed blink-neon">HUMANEx</div>
       <HeroSection innerRef={inicioRef} />
-      <EjerciciosSection innerRef={ejerciciosRef} />
-      <TeoriaSection innerRef={teoriaRef} />
-      <SobreSection innerRef={sobreRef} />
-      <ContactoSection innerRef={contactoRef} />
-
+      <main className="main-sections-grid">
+        <EjerciciosSection innerRef={ejerciciosRef} />
+        <TeoriaSection innerRef={teoriaRef} />
+        <SobreSection innerRef={sobreRef} />
+        <ContactoSection innerRef={contactoRef} />
+      </main>
       <ScrollToTopButton />
       <Footer />
     </div>
