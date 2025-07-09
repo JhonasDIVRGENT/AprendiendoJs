@@ -1,12 +1,63 @@
-# React + Vite
+# Aprende JavaScript · Proyecto React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una plataforma interactiva para aprender JavaScript desde cero, con ejercicios prácticos, teoría clara y recursos útiles. Está construido con React y Vite.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Ejercicios interactivos y explicados paso a paso
+- Teoría esencial y ejemplos visuales
+- Consejos y buenas prácticas para programar
+- Navegación suave entre secciones
+- Animaciones de aparición al hacer scroll
+- Botón para volver arriba
 
-## Expanding the ESLint configuration
+## Estructura del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+mi-react-app/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── ...
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+└── README.md
+```
+
+## Instalación
+
+1. Clona el repositorio:
+   ```sh
+   git clone <url-del-repo>
+   cd mi-react-app
+   ```
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+3. Inicia el servidor de desarrollo:
+   ```sh
+   npm run dev
+   ```
+
+Abre [http://localhost:5173](http://localhost:5173) para ver la app en tu navegador.
+
+## Scripts disponibles
+
+- `npm run dev` — Inicia el servidor de desarrollo
+- `npm run build` — Genera la versión de producción
+- `npm run preview` — Previsualiza la app de producción
+
+## Autor
+
+- Jhonas — [GitHub](https://github.com/jhonasdev)
+- Email: jhonas@email.com
+
+## Licencia
+
+Este proyecto es de uso libre para fines educativos.
